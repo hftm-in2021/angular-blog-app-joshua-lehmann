@@ -9,16 +9,26 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSliderModule} from "@angular/material/slider";
 import {FormsModule} from "@angular/forms";
+import {TodosComponent} from './components/todos/todos.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
+import {TodoItemComponent} from './components/todo-item/todo-item.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {AddTodoComponent} from './components/add-todo/add-todo.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodosComponent,
+    TodoItemComponent,
+    AddTodoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatFormFieldModule, MatInputModule, MatIconModule, MatSliderModule, FormsModule
+    MatFormFieldModule, MatInputModule, MatIconModule, MatSliderModule, FormsModule, MatCardModule, MatButtonModule, FontAwesomeModule, MatDialogModule
 
   ],
   providers: [],
