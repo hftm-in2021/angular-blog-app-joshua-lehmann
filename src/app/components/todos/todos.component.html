@@ -1,0 +1,5 @@
+<div [ngClass]="'todo-container'">
+  <button mat-raised-button (click)="openDialog('0ms', '0ms')">Add Todo</button>
+  <app-todo-item *ngFor="let todo of todos" [todo]="todo" [deleteTodo]="deleteTodo" [completeTodo]="toggleComplete"></app-todo-item>
+</div>
+
