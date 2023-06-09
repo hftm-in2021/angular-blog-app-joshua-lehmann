@@ -1,0 +1,12 @@
+<div
+  *ngIf="blogEntries$ | async as entries; else loading"
+  [ngClass]="'blog-container'"
+>
+  <div *ngFor="let entry of entries" [ngClass]="'blog-entry'">
+    <app-blog-entry [blogEntry]="entry"></app-blog-entry>
+  </div>
+</div>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

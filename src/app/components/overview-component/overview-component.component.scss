@@ -1,0 +1,10 @@
+.blog-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 80%;
+}
+
+.blog-entry {
+  border: solid 1px black;
+}
