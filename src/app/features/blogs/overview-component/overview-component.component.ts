@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../../../core/services/blog.service';
-import BlogEntry from '../../../interfaces/Blog';
+import { BlogService } from '../../../services/blog.service';
 import { Observable } from 'rxjs';
+import { BlogEntry } from '../../../model/Blog';
 
 @Component({
   selector: 'app-overview-component',
@@ -14,8 +14,6 @@ export class OverviewComponentComponent implements OnInit {
   constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.blogEntries$ = this.blogService.getEntries();
-    console.log(this.blogEntries$);
   }
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { BlogDetail } from '../../interfaces/Blog';
-import { BlogService } from '../../core/services/blog.service';
+import { BlogDetail } from '../../model/Blog';
+import { BlogService } from '../../services/blog.service';
 
 @Component({
   selector: 'app-blog-detail',
