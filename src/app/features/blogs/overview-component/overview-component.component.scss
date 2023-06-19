@@ -1,0 +1,14 @@
+.blog-container {
+  display: flex;
+  //justify-content: space-between;
+  flex-wrap: wrap;
+  //height: 80%;
+  //gap: 5%;
+}
+
+.blog-entry {
+  flex: 1 0 300px; /* Adjust the width as needed */
+  height: 200px; /* Adjust the height as needed */
+  margin: 10px;
+  background-color: #f2f2f2;
+}

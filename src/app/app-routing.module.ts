@@ -2,13 +2,20 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: '', pathMatch: 'full', redirectTo: 'blogs' },
   {
-    path: 'home',
+    path: 'blogs/:blogId',
     loadChildren: () =>
-      import('./features/home/home.module').then((m) => m.HomeModule),
+      import('./features/blog-detail/blog-detail.module').then(
+        (m) => m.BlogDetailModule
+      ),
   },
-  { path: '**', redirectTo: 'home' },
+  {
+    path: 'blogs',
+    loadChildren: () =>
+      import('./features/blogs/blogs.module').then((m) => m.BlogsModule),
+  },
+  { path: '**', redirectTo: 'blogs' },
 ];
 
 @NgModule({

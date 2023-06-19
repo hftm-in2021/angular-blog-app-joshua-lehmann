@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../../services/blog.service';
-import BlogEntry from '../../interfaces/Blog';
+import { BlogService } from '../../../core/services/blog.service';
+import BlogEntry from '../../../interfaces/Blog';
 import { Observable } from 'rxjs';
 
 @Component({

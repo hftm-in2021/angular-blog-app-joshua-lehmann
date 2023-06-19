@@ -1,6 +1,5 @@
-<mat-card>
+<mat-card class="blog-card">
   <mat-card-header>
-    <div mat-card-avatar></div>
     <mat-card-title>{{ blogEntry.title }}</mat-card-title>
     <mat-card-subtitle>{{ blogEntry.author }}</mat-card-subtitle>
   </mat-card-header>
@@ -9,4 +8,9 @@
       {{ blogEntry.contentPreview }}
     </p>
   </mat-card-content>
+  <mat-card-actions class="mat-card-actions">
+    <button [routerLink]="[blogEntry.id]" mat-raised-button color="primary">
+      Read More
+    </button>
+  </mat-card-actions>
 </mat-card>
