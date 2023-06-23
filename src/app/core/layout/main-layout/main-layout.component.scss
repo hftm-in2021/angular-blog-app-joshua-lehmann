@@ -1,0 +1,25 @@
+.spacer {
+  flex: 1 0 auto;
+}
+
+button {
+  margin: 0 10px;
+
+  &.activeLink {
+    filter: brightness(120%);
+  }
+}
+
+.alert {
+  z-index: 1000;
+  width: 100%;
+  padding: 10px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+}

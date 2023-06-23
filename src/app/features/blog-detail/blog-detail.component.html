@@ -1,0 +1,18 @@
+<div class="back-button">
+  <button
+    mat-mini-fab
+    color="primary"
+    matTooltip="Go Back to Blog List"
+    routerLink=".."
+  >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</div>
+<div class="detail-container" *ngIf="blogDetail$ | async as blog; else loading">
+  <h1>{{ blog.title }}</h1>
+  <p>{{ blog.content }}</p>
+</div>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

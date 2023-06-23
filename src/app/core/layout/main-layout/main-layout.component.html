@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+  <span>My Blog App</span>
+  <span class="spacer"></span>
+
+  <a
+    routerLink="blogs"
+    routerLinkActive="activeLink"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <button mat-flat-button color="primary" routerLinkActive="activeLink">
+      <mat-icon>home</mat-icon>
+      Home
+    </button>
+  </a>
+  <a routerLink="admin" routerLinkActive="activeLink">
+    <button mat-flat-button color="primary">
+      <mat-icon>admin_panel_settings</mat-icon>
+      Admin
+    </button>
+  </a>
+</mat-toolbar>
+
+<main>
+  <div class="alert-container">
+    <div
+      class="alert alert-success"
+      *ngIf="successMessage$ | async as successMessage"
+    >
+      {{ successMessage }}
+    </div>
+    <div
+      class="alert alert-error"
+      *ngIf="errorMessage$ | async as errorMessage"
+    >
+      {{ errorMessage }}
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</main>
