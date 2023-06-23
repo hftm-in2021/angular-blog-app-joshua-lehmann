@@ -9,8 +9,8 @@
     </p>
   </mat-card-content>
   <mat-card-actions class="mat-card-actions">
-    <button [routerLink]="[blogEntry.id]" mat-raised-button color="primary">
-      Read More
-    </button>
+    <a [routerLink]="[blogEntry.id]">
+      <button mat-raised-button color="primary">Read More</button>
+    </a>
   </mat-card-actions>
 </mat-card>

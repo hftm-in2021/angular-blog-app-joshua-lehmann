@@ -2,23 +2,18 @@
   <span>My Blog App</span>
   <span class="spacer"></span>
 
-  <button
-    mat-flat-button
-    color="primary"
+  <a
     routerLink="blogs"
     routerLinkActive="activeLink"
     [routerLinkActiveOptions]="{ exact: true }"
   >
-    Home
-  </button>
-  <button
-    mat-flat-button
-    color="primary"
-    routerLink="admin"
-    routerLinkActive="activeLink"
-  >
-    Admin
-  </button>
+    <button mat-flat-button color="primary" routerLinkActive="activeLink">
+      Home
+    </button>
+  </a>
+  <a routerLink="admin" routerLinkActive="activeLink">
+    <button mat-flat-button color="primary">Admin</button>
+  </a>
 </mat-toolbar>
 
 <main>
