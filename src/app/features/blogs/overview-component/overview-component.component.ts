@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../../../services/blog.service';
+import { BlogService, BlogServiceState } from '../../../services/blog.service';
 import { Observable } from 'rxjs';
-import { BlogEntry } from '../../../model/Blog';
 
 @Component({
   selector: 'app-overview-component',
@@ -9,11 +8,15 @@ import { BlogEntry } from '../../../model/Blog';
   styleUrls: ['./overview-component.component.scss'],
 })
 export class OverviewComponentComponent implements OnInit {
-  blogEntries$!: Observable<Array<BlogEntry>>;
+  blogEntriesState$!: Observable<BlogServiceState>;
 
   constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {
-    this.blogEntries$ = this.blogService.getEntries();
+    this.blogEntriesState$ = this.blogService.blogEntriesState$;
+  }
+
+  refresh() {
+    this.blogService.getEntries();
   }
 }
