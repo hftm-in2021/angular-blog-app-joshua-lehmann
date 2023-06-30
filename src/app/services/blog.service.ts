@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import {
-  BlogDetail,
-  BlogDetailSchema,
-  BlogEntry,
-  BlogEntrySchema,
-} from '../model/Blog';
+import { BlogDetail, BlogDetailSchema, BlogEntry, BlogEntrySchema } from '../model/Blog';
 import { verifyResponseType } from './validator-helper';
 import { z } from 'zod';
 import { NotificationService } from './notification.service';
@@ -27,10 +22,7 @@ export class BlogService {
     status: 'loading',
   });
 
-  constructor(
-    private http: HttpClient,
-    private notificationService: NotificationService
-  ) {
+  constructor(private http: HttpClient, private notificationService: NotificationService) {
     this.getEntries();
   }
 
@@ -50,6 +42,9 @@ export class BlogService {
             status: 'error',
             error: err.message,
           };
+          this.notificationService.setErrorMessage(
+            'There was an error while trying to load the blog entries:' + err.message
+          );
           return of(state);
         })
       )

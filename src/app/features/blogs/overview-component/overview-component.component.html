@@ -1,5 +1,8 @@
 <div>
-  <button mat-raised-button color="primary" (click)="refresh()">Refresh</button>
+  <button mat-raised-button color="accent" (click)="refresh()">
+    <mat-icon>refresh</mat-icon>
+    Refresh
+  </button>
 </div>
 
 <ng-container *ngIf="blogEntriesState$ | async as blogsState">
