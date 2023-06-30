@@ -36,7 +36,6 @@ export class BlogService {
 
   getEntries() {
     this.blogEntriesState$.next({ data: [], status: 'loading' });
-    // return
     this.http
       .get<Array<BlogEntry>>(`${environment.backendUrl}/entries`)
       .pipe(

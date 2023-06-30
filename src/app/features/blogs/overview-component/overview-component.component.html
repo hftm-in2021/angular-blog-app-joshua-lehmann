@@ -1,23 +1,23 @@
 <div>
   <button mat-raised-button color="primary" (click)="refresh()">Refresh</button>
 </div>
-<div
-  *ngIf="blogEntriesState$ | async as blogsState"
-  [ngClass]="'blog-container'"
->
-  <ng-container *ngIf="blogsState.status === 'loading'">
-    <mat-spinner></mat-spinner>
-  </ng-container>
 
-  <div *ngIf="blogsState.status === 'error'">
-    <h4>There was an error while trying to load the blog entries:</h4>
-    <br />
-    {{ blogsState.error }}
-  </div>
+<ng-container *ngIf="blogEntriesState$ | async as blogsState">
+  <div [ngSwitch]="blogsState.status" class="blog-container">
+    <ng-container *ngSwitchCase="'loading'">
+      <mat-spinner></mat-spinner>
+    </ng-container>
 
-  <ng-container *ngIf="blogsState.status === 'success'">
-    <div *ngFor="let entry of blogsState.data" [ngClass]="'blog-entry'">
-      <app-blog-entry [blogEntry]="entry"></app-blog-entry>
+    <div *ngSwitchCase="'error'">
+      <h4>There was an error while trying to load the blog entries:</h4>
+      <br />
+      {{ blogsState.error }}
     </div>
-  </ng-container>
-</div>
+
+    <ng-container *ngSwitchCase="'success'">
+      <div *ngFor="let entry of blogsState.data" [ngClass]="'blog-entry'">
+        <app-blog-entry [blogEntry]="entry"></app-blog-entry>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
