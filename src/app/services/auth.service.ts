@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   logout() {
-    this.oidcSecurityService.logoff().subscribe((result) => console.log(result));
+    this.oidcSecurityService.logoff();
   }
 
   setUser(isAuthenticated: boolean, userData: User, token: string) {

@@ -11,7 +11,7 @@ import { AuthService } from '../../../services/auth.service';
 export class MainLayoutComponent {
   userData$ = this.authService.getUser();
 
-  constructor(private notificationService: NotificationService, private authService: AuthService) {}
+  constructor(private notificationService: NotificationService, public authService: AuthService) {}
 
   successMessage$ = this.notificationService.successMessageAction$.pipe(
     tap((message) => {
@@ -31,12 +31,4 @@ export class MainLayoutComponent {
       }
     })
   );
-
-  login() {
-    this.authService.login();
-  }
-
-  logout() {
-    this.authService.logout();
-  }
 }
