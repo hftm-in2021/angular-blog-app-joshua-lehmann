@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NotificationService } from '../../../services/notification.service';
 import { tap } from 'rxjs';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -8,7 +9,9 @@ import { tap } from 'rxjs';
   styleUrls: ['./main-layout.component.scss'],
 })
 export class MainLayoutComponent {
-  constructor(private notificationService: NotificationService) {}
+  userData$ = this.authService.getUser();
+
+  constructor(private notificationService: NotificationService, private authService: AuthService) {}
 
   successMessage$ = this.notificationService.successMessageAction$.pipe(
     tap((message) => {
@@ -28,4 +31,12 @@ export class MainLayoutComponent {
       }
     })
   );
+
+  login() {
+    this.authService.login();
+  }
+
+  logout() {
+    this.authService.logout();
+  }
 }
