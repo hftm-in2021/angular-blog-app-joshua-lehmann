@@ -9,14 +9,18 @@ import { Observable } from 'rxjs';
 })
 export class OverviewComponentComponent implements OnInit {
   blogEntriesState$!: Observable<BlogServiceState>;
+  blogDataState$!: Observable<BlogServiceState>;
 
   constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {
-    this.blogEntriesState$ = this.blogService.blogEntriesState$;
+    // this.blogEntriesState$ = this.blogService.blogEntriesState$;
+    this.blogDataState$ = this.blogService.getBlogEntries();
   }
 
   refresh() {
     this.blogService.getEntries();
   }
+
+  protected readonly JSON = JSON;
 }

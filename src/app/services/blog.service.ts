@@ -6,9 +6,10 @@ import { verifyResponseType } from './validator-helper';
 import { z } from 'zod';
 import { NotificationService } from './notification.service';
 import { BehaviorSubject, catchError, map, of } from 'rxjs';
+import { DataService } from './data.service';
 
 export interface BlogServiceState {
-  data: Array<BlogEntry>;
+  data?: Array<BlogEntry>;
   status: 'loading' | 'error' | 'success';
   error?: string;
 }
@@ -22,10 +23,15 @@ export class BlogService {
     status: 'loading',
   });
 
-  constructor(private http: HttpClient, private notificationService: NotificationService) {
-    this.getEntries();
+  constructor(
+    private http: HttpClient,
+    private notificationService: NotificationService,
+    private dataService: DataService
+  ) {
+    // this.getEntries();
   }
 
+  // TODO: Remove later once option with shared data service works
   getEntries() {
     this.blogEntriesState$.next({ data: [], status: 'loading' });
     this.http
@@ -43,7 +49,7 @@ export class BlogService {
             error: err.message,
           };
           this.notificationService.setErrorMessage(
-            'There was an error while trying to load the blog entries:' + err.message
+            `There was an error while trying to load the blog entries: ${err.message}`
           );
           return of(state);
         })
@@ -53,9 +59,18 @@ export class BlogService {
       });
   }
 
+  getBlogEntries() {
+    return this.dataService.getData(`${environment.backendUrl}/entries`, z.array(BlogEntrySchema));
+  }
+
+  // TODO: Remove later once option with shared data service works
   getDetail(id: number) {
     return this.http
       .get<BlogDetail>(`${environment.backendUrl}/entries/${id}`)
       .pipe(verifyResponseType(BlogDetailSchema, this.notificationService));
+  }
+
+  getBlogDetail(id: number) {
+    return this.dataService.getData(`${environment.backendUrl}/entries/${id}`, BlogDetailSchema);
   }
 }

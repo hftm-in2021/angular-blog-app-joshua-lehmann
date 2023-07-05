@@ -5,7 +5,10 @@
   </button>
 </div>
 
-<ng-container *ngIf="blogEntriesState$ | async as blogsState">
+<ng-container *ngIf="blogDataState$ | async as blogsState">
+  <div>
+    {{ JSON.stringify(blogsState) }}
+  </div>
   <div [ngSwitch]="blogsState.status" class="blog-container">
     <ng-container *ngSwitchCase="'loading'">
       <mat-spinner></mat-spinner>
