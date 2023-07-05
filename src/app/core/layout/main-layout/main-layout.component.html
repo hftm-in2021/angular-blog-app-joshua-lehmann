@@ -1,12 +1,6 @@
 <mat-toolbar color="primary">
   <span>My Blog App</span>
-  <span class="spacer"></span>
-
-  <a
-    routerLink="blogs"
-    routerLinkActive="activeLink"
-    [routerLinkActiveOptions]="{ exact: true }"
-  >
+  <a routerLink="blogs" routerLinkActive="activeLink" [routerLinkActiveOptions]="{ exact: true }">
     <button mat-flat-button color="primary" routerLinkActive="activeLink">
       <mat-icon>home</mat-icon>
       Home
@@ -18,20 +12,32 @@
       Admin
     </button>
   </a>
+  <span class="spacer"></span>
+
+  <ng-container *ngIf="userData$ | async as userData">
+    <span *ngIf="userData.isAuthenticated; else loggedOut">
+      {{ userData.user.preferred_username }}
+      <button mat-flat-button color="primary" (click)="this.authService.logout()">
+        <mat-icon>logout</mat-icon>
+        Logout
+      </button>
+    </span>
+  </ng-container>
+
+  <ng-template #loggedOut>
+    <button mat-flat-button color="primary" (click)="this.authService.login()">
+      <mat-icon>login</mat-icon>
+      Login
+    </button>
+  </ng-template>
 </mat-toolbar>
 
 <main>
   <div class="alert-container">
-    <div
-      class="alert alert-success"
-      *ngIf="successMessage$ | async as successMessage"
-    >
+    <div class="alert alert-success" *ngIf="successMessage$ | async as successMessage">
       {{ successMessage }}
     </div>
-    <div
-      class="alert alert-error"
-      *ngIf="errorMessage$ | async as errorMessage"
-    >
+    <div class="alert alert-error" *ngIf="errorMessage$ | async as errorMessage">
       {{ errorMessage }}
     </div>
   </div>

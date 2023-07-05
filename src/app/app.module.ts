@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { AuthConfigModule } from './auth/auth-config.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [CoreModule, AppRoutingModule],
+  imports: [CoreModule, AppRoutingModule, AuthConfigModule],
   providers: [],
   bootstrap: [AppComponent],
 })
