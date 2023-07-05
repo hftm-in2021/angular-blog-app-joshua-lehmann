@@ -1,17 +1,29 @@
 <div class="back-button">
-  <button
-    mat-mini-fab
-    color="primary"
-    matTooltip="Go Back to Blog List"
-    routerLink=".."
-  >
+  <button mat-mini-fab color="primary" matTooltip="Go Back to Blog List" routerLink="..">
     <mat-icon>arrow_back</mat-icon>
   </button>
 </div>
-<div class="detail-container" *ngIf="blogDetail$ | async as blog; else loading">
-  <h1>{{ blog.title }}</h1>
-  <p>{{ blog.content }}</p>
-</div>
+
+<ng-container *ngIf="blogDetail$ | async as blogsState">
+  <div [ngSwitch]="blogsState.status" class="blog-container">
+    <ng-container *ngSwitchCase="'loading'">
+      <mat-spinner></mat-spinner>
+    </ng-container>
+
+    <div *ngSwitchCase="'error'">
+      <h4>There was an error while trying to load the blog entries:</h4>
+      <br />
+      {{ blogsState.error }}
+    </div>
+
+    <ng-container *ngSwitchCase="'success'">
+      <div class="detail-container" *ngIf="blogsState.data">
+        <h1>{{ blogsState.data.title }}</h1>
+        <p>{{ blogsState.data.content }}</p>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
 
 <ng-template #loading>
   <mat-spinner></mat-spinner>
