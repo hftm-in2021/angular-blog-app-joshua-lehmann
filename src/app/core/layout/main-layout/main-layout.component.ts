@@ -36,4 +36,8 @@ export class MainLayoutComponent {
   hasUserRole() {
     return hasRole('user', this.authService.getUser().getValue().token);
   }
+
+  throwError() {
+    throw new Error('This is an error');
+  }
 }

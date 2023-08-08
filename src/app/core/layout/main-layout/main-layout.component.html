@@ -13,6 +13,11 @@
     </button>
   </a>
 
+  <button mat-flat-button color="primary" (click)="this.throwError()">
+    <mat-icon>error</mat-icon>
+    Error
+  </button>
+
   <ng-container *ngIf="userData$ | async as userData">
     <span *ngIf="userData.isAuthenticated; else null">
       <a

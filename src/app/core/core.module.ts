@@ -9,9 +9,10 @@ import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { PageNotFoundComponent } from './layout/page-not-found.component';
+import { ErrorPageComponent } from './error/error-page.component';
 
 @NgModule({
-  declarations: [MainLayoutComponent, PageNotFoundComponent],
+  declarations: [MainLayoutComponent, PageNotFoundComponent, ErrorPageComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
