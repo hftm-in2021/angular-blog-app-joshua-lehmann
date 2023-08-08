@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { addBlogGuard } from './core/auth/add-blog.guard';
+import { PageNotFoundComponent } from './core/layout/page-not-found.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'blogs' },
@@ -20,7 +21,7 @@ const routes: Routes = [
     loadChildren: () => import('./features/blogs/blogs.module').then((m) => m.BlogsModule),
   },
 
-  { path: '**', redirectTo: 'blogs' },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

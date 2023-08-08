@@ -8,9 +8,10 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
 import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { PageNotFoundComponent } from './layout/page-not-found.component';
 
 @NgModule({
-  declarations: [MainLayoutComponent],
+  declarations: [MainLayoutComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
