@@ -12,10 +12,26 @@
       Admin
     </button>
   </a>
+
+  <ng-container *ngIf="userData$ | async as userData">
+    <span *ngIf="userData.isAuthenticated; else null">
+      <a
+        routerLink="blogs/add"
+        routerLinkActive="activeLink"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <button mat-flat-button color="primary" routerLinkActive="activeLink">
+          <mat-icon>add-circle</mat-icon>
+          Create Blog
+        </button>
+      </a>
+    </span>
+  </ng-container>
+
   <span class="spacer"></span>
 
   <ng-container *ngIf="userData$ | async as userData">
-    <span *ngIf="userData.isAuthenticated; else loggedOut">
+    <span *ngIf="hasUserRole; else loggedOut">
       {{ userData.user.preferred_username }}
       <button mat-flat-button color="primary" (click)="this.authService.logout()">
         <mat-icon>logout</mat-icon>

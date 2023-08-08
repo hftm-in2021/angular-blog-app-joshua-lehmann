@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NotificationService } from '../../notification.service';
 import { tap } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
+import { hasRole } from '../../auth/jwt';
 
 @Component({
   selector: 'app-main-layout',
@@ -31,4 +32,8 @@ export class MainLayoutComponent {
       }
     })
   );
+
+  hasUserRole() {
+    return hasRole('user', this.authService.getUser().getValue().token);
+  }
 }
