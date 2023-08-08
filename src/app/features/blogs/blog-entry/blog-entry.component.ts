@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { BlogEntry } from '../../../model/Blog';
+import { BlogEntry } from '../Blog';
 
 @Component({
   selector: 'app-blog-entry',

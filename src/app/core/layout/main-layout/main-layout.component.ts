@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NotificationService } from '../../../services/notification.service';
+import { NotificationService } from '../../notification.service';
 import { tap } from 'rxjs';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-main-layout',

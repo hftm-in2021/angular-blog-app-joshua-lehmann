@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { AuthConfigModule } from './auth/auth-config.module';
+import { AuthConfigModule } from './core/auth/auth-config.module';
 
 @NgModule({
   declarations: [AppComponent],

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService, BlogServiceState } from '../../../services/blog.service';
+import { BlogService, BlogServiceState } from '../../../core/blog.service';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../../core/auth/auth.service';
 
 @Component({
   selector: 'app-overview-component',
